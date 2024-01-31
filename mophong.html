@@ -26,7 +26,33 @@
            - Prop cơ bản là đối số của component
               => Props có thể là bất cứ kiểu dữ liệu gì
            - Sử dụng destructuring
+
+
+
+           ///** Làm việc với JSX
+
+           / Phần 1.
+           - Xử lý DOM events
+           - Component do chúng ta định nghĩa phải viết in hoa chữ cái đầu
+           - Chọn Component trong 1 object
+           - Booleans, Null & Undefined không được render
+           - Kết hợp toán tử logic dễ render theo điều kiện 
+
+           / Phần 2.
+           - Props trong JSX 
+               - <Your Component
+                    propName1 = "String literals"
+                    propName2 = {expression}
+                />
+                - Props default to "true"
+                - Spread/Rest props
+                - Children prop
+                    - <YourComponent>String literals</YourComponent>
+                    - <YourComponent>{expression}</YourComponent>
+                - Render props        
      -->
+
+     
      
      <div id="root"></div>
 
@@ -46,11 +72,31 @@
             )
         }
 
+        // PostItem
+
+
+        const CourseItem = props => {
+            <div>
+                <h2>{props.title}</h2>
+                <img src={props.image}/>
+                <p>{props.description}</p>
+                <p>{props.studentsCount}</p>
+            </div>
+        }
+
         //app.js
         function App() {
             return (
                 <div id="wrapper">
-                    <PostItem />
+                    {courses.map(course => (
+                        <CourseItem
+                            key={course.id}
+                            title={course.title}
+                            image={course.thumbnail_cdn}
+                            description={course.description}
+                            studentsCount={course.students_count}
+                        />
+                    ))}
                 </div>
             )
         }
