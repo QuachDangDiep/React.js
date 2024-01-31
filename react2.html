@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>React-DOM</title>
+</head>
+<body>
+    <!--
+        JSX -> Javascript XML ()
+
+        1. Luôn đúng React.createElement()? vấn đề ?
+        2. JSX? Live demo: https://bit.ly/2VOIMN7
+        3. JSX không phải là HTML,
+            Cần có Javascript, Babel để dùng JSX
+        4. JSX và React-DOM?
+
+        <ul>
+            <li>Javascript</li>
+            <li>ReactJS</li>
+        </ul>
+    -->
+    <div id="root"></div>
+    <!-- <script type="text/babel">
+        const reactCourse = 'ReactJS F8'
+
+        const ul = <ul>
+            <li>Javascript</li>
+            <li>ReactJS</li>
+        </ul>
+        
+        ReactDOM.render(ul, document.getElementById('root'))
+    </script> -->
+
+    <!-- 
+        *Câu hỏi thường gặp
+        - Tại sao khi code thuần dùng map phải join()...
+        - Gặp lỗi khi render từ mảng (prop "Key")
+        - Không render được 2 elements cùng lúc 
+     -->
+    <!-- <script type="text/babel">
+
+        const courses = [
+            {
+                name: 'HTML, CSS',
+            },
+            {
+                name: 'Responsive wed design',
+            },
+            {
+                name: 'ReactJS'
+            }
+        ]
+
+        const jsx = (
+            <ul>
+                {courses.map((course, index) =>
+                    <li key = {index}>{course.name}</li>
+                )}
+            </ul>
+        )
+
+        ReactDOM.render(jsx, document.getElementById('root'))
+    </script> -->
+
+    <!-- <div id="root"></div>
+    <script type="text/babel">
+
+        // const jsx = (
+        //     <React.Fragment>
+        //         <h1>Heading 1</h1>
+        //         <h2>Heading 2</h2>    
+        //     </React.Fragment>
+        // )
+
+        const jsx = React.createElement(
+            React.Fragment,
+            null,
+            React.createElement('h1', null, 'Heading 1'),
+            React.createElement('h2', null, 'Heading 2'),
+        )
+        
+        ReactDOM.render(jsx, document.getElementById('root'))
+    </script> -->
+
+    <!-- 
+        *Hooks
+
+        1.React element types: string, function/class
+          - Wrapper
+            - Header -> Header component
+            - Content -> Content Component
+            - Footer -> Footer Component
+        2. Biểu diễn đơn giản với JSX
+     -->
+     <!-- <div id="app"></div>
+
+     <script type="text/babel">
+
+        function Header() {
+            return(
+                <div className="header">New Header</div>
+            )
+        }
+
+        class Content extends React.Component {
+            render() {
+                return (
+                <div className="content">New Content</div>
+                )
+            }
+        }
+
+        const app = (
+            <div className="Wrapper">
+                <Header/>
+                <Content/>
+                <div className="footer">Footer</div>
+            </div>
+        )
+
+        console.log(app);
+
+        ReactDOM.render(app, document.getElementById('app'))
+     </script> -->
+
+     <div id="root"></div>
+
+     <script type="text/babel">
+
+        const courses = {
+            
+        }
+
+        // CourseItem
+
+
+        // PostItem.js
+        function PostItem(props) {
+        //     return (
+        //         <div className="posts-list">
+        //             <div className="post-item">
+        //                 <img src="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220" alt="Anh"/>
+        //                 <h2 className="post-title">Tương tác với nhân viên hỗ trợ</h2>
+        //                 <p className="post-desc">Bạn có kiến thức ngôn ngữ nào chưa</p>
+        //                 <p className="post-published">Một ngày trước, 5 ngày sau</p>
+        //             </div>
+        //         </div>
+        //     )
+        // }
+        return (
+            <div className="post-item">
+                <img
+                    src={props.image}
+                    alt={props.title}
+                />
+                <h2 className="post-title">{props.title}</h2>
+                <p className="post-desc">{props.description}</p>
+                <p className="post-published">{props.publishedAt}</p>
+            </div>
+        )
+        }
+
+        //app.js
+        function App() {
+
+            console.log(<PostItem title="Title test" />);
+
+            return (
+                <div id="wrapper">
+                    <PostItem 
+                         title="Tương tác với nhân viên hỗ trợ"
+                         image="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220"
+                         description="Bạn có kiến thức ngôn ngữ nào chưa"
+                         publishedAt="Một ngày trước, 5 ngày sau"
+                         
+                    />
+                    <PostItem 
+                        title="Tương tác với nhân viên hỗ trợ"
+                         image="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220"
+                         description="Bạn có kiến thức ngôn ngữ nào chưa"
+                         publishedAt="Một ngày trước, 5 ngày sau"
+                    />
+                </div>
+            )
+        }
+
+        // index.js
+        ReactDOM.render(<App />, document.getElementById('root'))
+
+     </script>
+<!-- 
+        Props
+
+        - React elements
+           - Sử dụng props giống như với attribute của thẻ HTMl
+           - 2 props calss, for => className, htmlFor
+           - Phải tuân theo quy ước có sẵn
+        - React components
+           - Sử dụng props giống như đối số cho component
+           - Tự do đặt tên props
+              - Đặt theo camelCase
+              - *Có thể bao gồm dấu gạch ngang
+        - Chú ý:
+           - Prop "key" là prop đặc biệt 
+           - Prop cơ bản là đối số của component
+              => Props có thể là bất cứ kiểu dữ liệu gì
+           - Sử dụng destructuring
+     -->
+
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <title>ReactJS</title>
+</head>
+<body>
+    <!-- 
+        Props
+
+        - React elements
+           - Sử dụng props giống như với attribute của thẻ HTMl
+           - 2 props calss, for => className, htmlFor
+           - Phải tuân theo quy ước có sẵn
+        - React components
+           - Sử dụng props giống như đối số cho component
+           - Tự do đặt tên props
+              - Đặt theo camelCase
+              - *Có thể bao gồm dấu gạch ngang
+        - Chú ý:
+           - Prop "key" là prop đặc biệt 
+           - Prop cơ bản là đối số của component
+              => Props có thể là bất cứ kiểu dữ liệu gì
+           - Sử dụng destructuring
+     -->
+     
+     <div id="root"></div>
+
+     <script type="text/babel">
+
+        // PostItem.js
+        function PostItem() {
+            return (
+                <div className="posts-list">
+                    <div className="post-item">
+                        <img src="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220" alt="Anh"/>
+                        <h2 className="post-title">Tương tác với nhân viên hỗ trợ</h2>
+                        <p className="post-desc">Bạn có kiến thức ngôn ngữ nào chưa</p>
+                        <p className="post-published">Một ngày trước, 5 ngày sau</p>
+                    </div>
+                </div>
+            )
+        }
+
+        //app.js
+        function App() {
+            return (
+                <div id="wrapper">
+                    <PostItem />
+                </div>
+            )
+        }
+
+        // index.js
+        ReactDOM.render(<App />, document.getElementById('root'))
+
+     </script>
+</body>
+</html>

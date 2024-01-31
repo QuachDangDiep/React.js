@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <title>ReactJS</title>
 </head>
 <body>
-    <!--
+    <!-- 
         5. Tạo:
            <h1 title="Hello" class="heading">Hello guys!</h1>
         6. Tạo:
@@ -81,6 +82,8 @@
 
         console.log(ulReact);
     </script>-->
+    <div id="root"></div>
+
     <script>
         // DOM
         const divDOM = document.createElement('div')
@@ -108,7 +111,29 @@
             React.createElement('p', null, 'Học ReactJS từ cơ bản đến nâng cao'),
         )
 
-        console.log(divReact);
+        // console.log(divReact);
+
+        // Get root element
+        const container = document.getElementById('container')
+
+        // React@17
+        // React-DOM -> render UI
+        // ReactDOM.render(postItem, root)
+
+        // React@18
+        const root = ReactDOM.createRoot(container)
+        root.render(postItem)
     </script>
+
+    <!-- 
+        1. Tại sao phải sử dụng React-DOM/React-Native ?
+        2. Tại sao lại tách React-DOM ra ?
+        3. Render UI
+
+        React-Native -> iOS, Android
+     -->
+     
+     <ul class="post_item"></ul>
+     <div class="product"></div>
 </body>
 </html>

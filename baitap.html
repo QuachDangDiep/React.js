@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <title>Bai tap</title>
+</head>
+<body>
+    <!-- 5. Tạo:
+           <h1 title="Hello" class="heading">Hello guys!</h1> -->
+        <!-- <script>
+            // DOM
+            const h1DOM = document.createElement('h1')
+            h1DOM.title = 'Hello',
+            h1DOM.className = 'heading',
+            h1DOM.innerText = 'Hello guys!'
+            document.body.appendChild(h1DOM)
+            // React
+            const h1React = React.createElement('h1',{
+                title: 'Hello',
+                className: 'heading',
+            }, 'Hello guys!')
+            console.log(h1React)
+            console.log(h1DOM)
+        </script> -->
+         <!-- 6. Tạo:
+         <ul>
+             <li>Javascript</li>
+             <li>ReactJs</li>
+         <ul> -->
+            <!-- <div id="root"></div>
+        <script>
+            // // DOM
+            // const ulDOM = document.createElement('ul')
+            // const liDOM1 = document.createElement('li')
+            // liDOM1.innerText = 'Javascript'
+            // const liDOM2 = document.createElement('li')
+            // liDOM2.innerText = 'ReactJS'
+            // ulDOM.appendChild(liDOM1)
+            // ulDOM.appendChild(liDOM2)
+            // document.body.appendChild(ulDOM)
+            //React
+            const ulReact = React.createElement(
+                'ul',
+                null,
+                React.createElement('li', null, 'Javascript'),
+                React.createElement('li', null, 'ReactJS'),
+            )
+            // console.log(ulDOM)
+            // console.log(ulReact)
+            ReactDOM.render(ulReact, document.getElementById('root'))
+        </script> -->
+        <!-- 7. Tạo:
+        <div class="post-item">
+            <h2 title="Học React tại F8">Học ReactJS</h2>
+            <p>Học reactJS từ cơ bản tới nâng cao</p>    
+        </div>       -->
+        <!-- <script>
+            // DOM
+            const divDOM = document.createElement('div')
+            divDOM.className = 'post-item'
+            const h2DOM = document.createElement('h2')
+            h2DOM.title = 'Học React tại F8'
+            h2DOM.innerText = 'Học ReactJS'
+            const pDOM = document.createElement('p')
+            pDOM.innerText = 'Học ReactJS từ cơ bản tới nâng cao'
+            divDOM.appendChild(h2DOM)
+            divDOM.appendChild(pDOM)
+            document.body.appendChild(divDOM)
+
+            //React
+            const divReact = React.createElement(
+                'div',
+                {
+                    className: 'post-item'
+                },
+                React.createElement('h2',{title: 'Học React tại F8'},'Học ReactJS'),
+                React.createElement('p', null, 'Học ReactJS từ cơ bản tới nâng cao')
+            )
+            console.log(divDOM)
+            console.log(divReact)
+        </script> -->
+
+        <!-- <div id="app"></div>
+
+        <script type="text/babel">
+
+            const reactElement = React.createElement(
+                'h1',
+                {
+                    title: 'Hello',
+                    className: 'h1-class'
+                },
+                'Hello anh em!'
+            )
+
+            const jsx =(
+                <h1 title = "Hello" className="h1-class">
+                    Hello anh em!
+                </h1>
+            )
+
+            ReactDOM.render(reactElement, document.getElementById('app'))
+            </script>
+         -->
+
+        <script type="text/babel">
+            function Header() {
+                return (
+                    <div className="header">New Header</div>
+                )
+            }
+
+            // PostItem
+
+            const app = (
+                <div className="posts-list">
+                    <div className="post-item">
+                        <img src="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220" alt="Anh"/>
+                        <h2 className="post-title">Tương tác với nhân viên hỗ trợ</h2>
+                        <p className="post-desc">Bạn có kiến thức ngôn ngữ nào chưa</p>
+                        <p className="post-published">Một ngày trước, 5 ngày sau</p>
+                    </div>
+                </div>
+            )
+
+            console.log(app);
+            
+            ReactDOM.render(app, document.getElementById('app'))
+        </script>
+</body>
+</html>
