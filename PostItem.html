@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <!--
+        Làm việc với JSX
+
+        phần 1
+        -xử lý DOM events
+        - component do chúng ta định nghĩa phải viết in hoa chữ cái đầu
+        - chọn Component trong 1 object
+        - Booleans, Null & Undefined không đc render
+        - Kết hợp toán tử logic để render theo điều kiện
+
+        Phần 2
+        - Props trong JSX
+            - <YourComponent
+                propName1="String literals"
+                propName2 = {expression}
+            />
+            - Props default to "true"
+            - Spread/Rest prop
+            - Children prop
+                -<YourComponent>String literals</ourComponent>
+                - <YourComponent>{expression}</YourComponent>
+            - Render props
+     -->
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Bai 1
+        // Post Item
+
+        // Transformer
+
+        /*const CourseItem = ({course}) => (
+            <div>
+                <h2>{course.title}</h2>
+                <img src = {course.image}/>
+                <h2>{course.description}</h2>
+                <h2>{course.studentsCount}</h2>
+            </div>
+        )
+
+        function App(){
+            return(
+                <div id="Wrapper">
+                    {courses.map(course =>(
+                        <CourseItem
+                            key={course.id}
+                            course={course}
+                        />
+                    ))}
+                </div>
+            )
+        }*/
+
+        // DOM
+
+        // function App(){
+        //     return(
+        //         <div id="Wrapper">
+        //             <button 
+        //                 onDoubleClick={(event) => 
+        //                     console.log(Math.random()) //event.tager
+        //                 }
+        //             >
+        //                 Click me!
+        //             </button>
+        //         </div>
+        //     )
+        // }
+
+
+        // Bai2
+        // UI Component
+        // function courseItem ({course, onClick}){
+        //     return(
+        //         <div>
+        //             <h2 onClick={() => onClick(course)}>{course.title}</h2>
+        //             <img width="100%" src = {course.image}/>
+        //             <h2>{course.description}</h2>
+        //             <h2>{course.studentsCount}</h2>
+        //         </div>
+        //     )
+        // }
+
+        // Container
+        // function App(){
+
+            // //useCallback
+            // const handleClick = () =>{
+            //     alert('onclick me!')
+            //     console.log(course.title)
+            // }
+
+        //     return(
+        //         <div id="wrapper">
+        //             {courses.map(course =>(
+        //                 <courseItem
+        //                     key={course.id}
+        //                     course={course}
+        //                     onClick={handleClick}
+        //                 />
+        //             ))}
+        //         </div>
+        //     )
+        // }
+
+        //  const Form = {
+        //     Input(){ <Form.Input/>
+        //         return <input type="text" placeholder="Enter your name"/>
+        //     },
+        //     Checkbox(){ <Form.Checkbox/>
+        //         return <input type="checkbox" />
+        //     }
+        //  }
+
+        // function Button({title, href, onClick}){
+        //     let Component = 'button'
+        //     const props = {}
+
+        //     if(href) {
+        //         Component = 'a'
+        //         props.href = href
+        //     }
+
+        //     if (onClick) {
+        //         props.onClick = onClick
+        //     }
+
+        //     return(
+        //         <Component {...props}>{title}</Component>
+        //     )
+
+                    // <Button 
+                    //     title="Click me!"
+                    //     href = "Link"
+                    //     onClick = {() => console.log(Math.random())}
+                    // />
+        // }
+
+        // function Button({ children }){
+        //     return <button>{children}</button>
+        // }
+
+        // function Input({label, ...inputProps}){
+        //     return(
+        //         <div>
+        //             <label>{label}</label>
+        //             <input {...inputProps}/>
+        //         </div>
+        //     )
+        // }
+
+        // {data.map(item => <li key={item}>{item}</li>)}
+
+
+        function List(data, chidlren){
+            return (
+                <ul>
+                    {data.map((...props) => chidlren(...props))}
+                </ul>
+            )
+        }
+
+
+        function App(){ //{title, content}
+            const cars = ['BMW', 'Honda', 'Mazda']
+            // const type = 'Input'
+            
+            // const Componnet = Form[type] <Component/>
+
+            // const firstAccess = true
+            // {firstAccess && <h1>Welcome to F 8</h1>}
+
+            // <h1>{title || content}</h1>
+
+            // const title = "Hello anh em!"
+            // const isPrimary = true
+            // <Button primary title={title}/>
+
+            // <Input
+            //           label="Full name"
+            //           type = "text"
+            //           placeholder="Enter name..."
+            //           title = "Day la input"
+            //           onFocus = {() => {
+            //             console.log(Math.random())
+            //           }}
+            //        />
+
+            return(
+                <div id="wrapper">
+                    <List data={cars}>
+                        {(item, index) => <li key={index}>{item}</li>}
+                    </List>
+                </div>
+            )
+        }
+        
+
+        ReactDOM.render(<App/>,document.getElementById("Root"));
+
+    </script>
+</body>
+</html>

@@ -24,7 +24,7 @@
             <li>ReactJS</li>
         </ul>
     -->
-    <div id="root"></div>
+    <!-- <div id="root"></div> -->
     <!-- <script type="text/babel">
         const reactCourse = 'ReactJS F8'
 
@@ -38,7 +38,7 @@
 
     <!-- 
         *Câu hỏi thường gặp
-        - Tại sao khi code thuần dùng map phải join()...
+        1. - Tại sao khi code thuần dùng map phải join()...
         - Gặp lỗi khi render từ mảng (prop "Key")
         - Không render được 2 elements cùng lúc 
      -->
@@ -59,10 +59,13 @@
         const jsx = (
             <ul>
                 {courses.map((course, index) =>
+                    /1. React.createElement('li',null,course.name)
                     <li key = {index}>{course.name}</li>
                 )}
             </ul>
         )
+
+        1. element.innerHTML = '...HTML'
 
         ReactDOM.render(jsx, document.getElementById('root'))
     </script> -->
@@ -101,6 +104,14 @@
 
      <script type="text/babel">
 
+        const app = (
+        <div className="Wrapper">
+            <div className="header">Header</div>
+            <div className="content">Content</div>
+            <div className="footer">Footer</div>
+        </div>
+        )
+
         function Header() {
             return(
                 <div className="header">New Header</div>
@@ -125,24 +136,64 @@
 
         console.log(app);
 
+        const reactElement = React.createElement(
+        'h1',
+        {
+        title: 'Hello',
+        className: 'h1-class'
+        }
+        'Hello anh em!'
+        ),
+
+        const jsx = {
+        <h1 title = "Hello" className="h1-class">
+            Hello anh em!
+        </h1>}
+
         ReactDOM.render(app, document.getElementById('app'))
      </script> -->
 
-     <div id="root"></div>
+     <!-- <div id="root"></div> -->
 
-     <script type="text/babel">
+    <script type="text/babel">
 
-        const courses = {
-            
-        }
+        // PostItem 
+        
+        // Đề bài
+    //     const courses = (
+    //     <div className="posts-list">
+    //         <div className="post-item">
+    //             <img src="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220" alt="Anh"/>
+    //             <h2 className="post-title">Tương tác với nhân viên hỗ trợ</h2>
+    //             <p className="post-desc">Bạn có kiến thức ngôn ngữ nào chưa</p>
+    //             <p className="post-published">Một ngày trước, 5 ngày sau</p>
+    //         </div>
+    //     </div>
+    // )
 
         // CourseItem
 
 
-        // PostItem.js
-        function PostItem(props) {
+        // PostItem.js (React Component)
+        function PostItem(props, 
+        {image, 
+            title, 
+            description, 
+            publishedAt, 
+            callback = () => {},
+        }) {
+
+            if(typeof props.callback === 'function')
+            props.callback(Math.random());
+
+
+            callback();
+
+            // ReactElement
         //     return (
         //         <div className="posts-list">
+            // <lable htmlFor="email">Email</lable>
+            // <input id="email"/>
         //             <div className="post-item">
         //                 <img src="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220" alt="Anh"/>
         //                 <h2 className="post-title">Tương tác với nhân viên hỗ trợ</h2>
@@ -150,6 +201,22 @@
         //                 <p className="post-published">Một ngày trước, 5 ngày sau</p>
         //             </div>
         //         </div>
+
+
+        
+            // PostItem.js (Functional Component)
+            //  const PostItem = ({title, image, description, publishedAt}) => {
+            //      // ReactElement
+            //      return (
+            //          <div className="post-item">
+            //              <img src={props.image} alt={props.title}/>
+            //              <h2 className="post-title">{props.title}</h2>
+            //              <p className="post-desc">{props.description}</p>
+            //              <p className="post-published">{props.publishedAt}</p>
+            //          </div>
+            //      )
+            // }
+    
         //     )
         // }
         return (
@@ -166,24 +233,30 @@
         }
 
         //app.js
+        // React component
         function App() {
 
             console.log(<PostItem title="Title test" />);
 
             return (
+                // ReactElement
                 <div id="wrapper">
+                    <h1>React Component</h1>
                     <PostItem 
-                         title="Tương tác với nhân viên hỗ trợ"
+                         title="1Tương tác với nhân viên hỗ trợ"
                          image="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220"
-                         description="Bạn có kiến thức ngôn ngữ nào chưa"
-                         publishedAt="Một ngày trước, 5 ngày sau"
-                         
+                         description="1Bạn có kiến thức ngôn ngữ nào chưa"
+                         publishedAt="1Một ngày trước, 5 ngày sau"
+                         data={[{a: 1}, {a: 2}, {a: 3}, {a: 4}]}
+                         callback = {(random) => {
+                            console.log('random: ',random)
+                         }}
                     />
                     <PostItem 
-                        title="Tương tác với nhân viên hỗ trợ"
+                        title="2Tương tác với nhân viên hỗ trợ"
                          image="https://tse1.mm.bing.net/th?id=OIP.zEh69b5tKM1yP121ok2llQHaE4&pid=Api&P=0&h=220"
-                         description="Bạn có kiến thức ngôn ngữ nào chưa"
-                         publishedAt="Một ngày trước, 5 ngày sau"
+                         description="2Bạn có kiến thức ngôn ngữ nào chưa"
+                         publishedAt="2Một ngày trước, 5 ngày sau"
                     />
                 </div>
             )
